@@ -1,0 +1,32 @@
+<head>
+        <%- include('head'); %>
+</head>
+<body> 
+    <div class="mt-7 container">
+        <h3 class="text-dr-br">Product view</h3>
+        <a class="text-dr-br" href="/admin"><i class="fas fa-arrow-left"></i> Back to Admin</a>
+        <div class="row mt-5">
+            <div class="col-lg-8 col-md-8 col-sm-8"><h4 class="text-dr-br">Products</h4></div>
+            <div class="col-lg-4 col-md-4 col-sm-4"><a href="/product_add" class="float-right btn btn-bl mb-1">Add product</a></div>
+        </div>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(function(product){ %>
+                    <%- include('product_table', product); %>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://kit.fontawesome.com/7ce695a48c.js" crossorigin="anonymous"></script>
+</body>

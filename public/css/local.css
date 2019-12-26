@@ -1,0 +1,168 @@
+.cell-bot {
+    margin-bottom: 10px;
+}
+.cell-top {
+    margin-top: 10px;
+}
+.cell-left {
+    margin-left: 20px;
+}
+.bg-light-transparent {
+    background-color: #f8f9fa !important;
+    opacity: 0.8;
+}
+.hidden {
+  display: none;
+}
+.text-dr-br {
+  color: #D9B08C !important;
+}
+.text-lg-br {
+  color: #FFCB9A !important;
+}
+.text-lg-bl {
+  color: #D1E8E2 !important;
+}
+.text-dr-bl {
+  color: #116466 !important;
+}
+.text-gr {
+  color: #2C3531 !important;
+}
+
+.bg-gr-transparent {
+  background-color: #2C3531 !important;
+  opacity: 0.8;
+}
+.bg-dr-br {
+  background-color: #D9B08C ;
+}
+
+.bg-lg-br {
+  background-color: #FFCB9A;
+}
+
+.bg-dr-bl {
+  background-color: #116466 ;
+}
+
+.bg-lg-bl {
+  background-color: #D1E8E2;
+}
+
+.bg-gr {
+  background-color: #2C3531;
+}
+
+.hidden {
+  display: none;
+}
+.mt-6{
+  margin-top: 6rem !important;
+}
+.mt-7{
+  margin-top: 8rem !important;
+}
+.mt-8{
+  margin-top: 10rem !important;
+}
+.mt-9{
+  margin-top: 12rem !important;
+}
+
+
+
+.mr-6{
+  margin-right: 6rem !important;
+}
+.mr-7{
+  margin-right: 8rem !important;
+}
+.mr-8{
+  margin-right: 10rem !important;
+}
+
+.hr-dr-bl {
+  border-top: 1px solid #116466 ;
+}
+
+.hr-lg-br {
+  border-top: 1px solid #FFCB9A ;
+}
+
+.btn-bl {
+  color: #FFCB9A;
+  background-color: #116466;
+  border-color: #116466;
+}
+
+.btn-bl:hover {
+  color: #FFCB9A;
+  background-color: #D1E8E2;
+  border-color: #D1E8E2;
+}
+
+.btn-main {
+  padding: 0.5rem 1rem;
+  font-size: 1.0rem;
+  line-height: 1.0;
+  border-radius: 0.2;
+}
+
+.btn-nav:hover {
+  color:#FFCB9A;
+  background-color: #000000;
+  border-color: #ffffff;
+}
+
+.btn-nav{
+  color:  #D9B08C; 
+  background-color:#2C3531;
+  border-color: #2C3531;
+}
+
+
+.slideanim {visibility:hidden;}
+.slide {
+  /* The name of the animation */
+  animation-name: slide;
+  -webkit-animation-name: slide;
+  /* The duration of the animation */
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  /* Make the element visible */
+  visibility: visible;
+}
+
+/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(70%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@-webkit-keyframes slide {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(70%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+  }
+}
+
+span {
+  font-family: 'Lato', sans-serif;
+}
+
+.bottom {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}

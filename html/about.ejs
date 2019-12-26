@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <%- include('head'); %>
+    </head>
+    
+    <body>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-gr-transparent">
+            <%- include('navbar'); %>
+        </nav>
+        <!-- Team -->
+        <section class="bg-transparent" style="margin-top: 5.1rem;">
+            <div class="row slide">
+                <div class="col-lg-8" ><img class="img-fluid" src="../img/About-us/akson-1K8pIbIrhkQ-unsplash.jpg"></div>
+                <div class="col-lg-4" >
+                    <h2 class="text-left display-4 mt-7 text-dr-br" >Our team</h2>
+                    <p class="text-justify mt-5 mr-8 font-weight-light" style="font-size: 22px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tincidunt augue interdum velit euismod in pellentesque massa.</p>
+                </div>    
+            </div>
+        </section>
+        
+        <!-- Values -->
+        <section class="my-5 py-5 bg-lg-bl">
+                  <div class="container">
+                <!-- first row-->
+                <div class="row">
+                    
+                    <div class="col-lg-4 col-md-12 col-sm-12  slideanim">
+                        <h2 class="text-left text-dr-bl" style="font-family: 'Montserrat', sans-serif;">What we value  <i class="fas fa-check-double text-dr-br" style="font-size: 1.0em;" ></i></h2>
+                        <p class="mt-2 text-justify font-weight-light" style="font-size: 18px">6 reasons why choosing us.</p>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <i class="fas fa-tachometer-alt text-dr-br slideanim" style="font-size: 1.25em;"></i>
+                        <span class="align-right text-dr-bl slideanim" style="font-size: 20px">Fast</span>
+                        <p class="mt-4 text-justify font-weight-light" style="font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fames ac turpis egestas integer.</p>
+                    </div>
+                    
+                    <!-- second 2 values -->
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <i class="fas fa-shield-alt text-dr-br slideanim" style="font-size: 1.25em;"></i>
+                        <span class="align-right text-dr-bl slideanim" style="font-size: 20px">Secure</span>
+                        <p class="mt-4 text-justify font-weight-light" style="font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus rutrum tellus pellentesque eu tincidunt.</p>
+                    </div>
+                    
+                </div>
+                
+                <!-- second row--> 
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12"> </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 mt-3">                        
+                        <i class="fas fa-bullseye text-dr-br slideanim" style="font-size: 1.25em;"></i>
+                        <span class="align-right text-dr-bl slideanim" style="font-size: 20px">Accuracy</span>
+                        <p class="mt-4 text-justify font-weight-light" style="font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis tristique sollicitudin nibh sit amet commodo nulla.</p>
+                    </div>
+                    
+                    <!-- second 2 values -->
+                    <div class="col-lg-4 col-md-12 col-sm-12 mt-3">
+                        <i class="far fa-check-circle text-dr-br slideanim" style="font-size: 1.25em;"></i>
+                        <span class="align-right text-dr-bl slideanim" style="font-size: 20px">Easy to order</span>
+                        <p class="mt-4 text-justify font-weight-light" style="font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus mauris ultrices eros in cursus turpis massa.</p>
+                    </div>  
+                </div>
+                
+                <!-- third row--> 
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12"> </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 mt-3">                        
+                        <i class="fas fa-ad text-dr-br slideanim" style="font-size: 1.4em;"></i>
+                        <span class="align-right text-dr-bl slideanim" style="font-size: 20px">Ad free</span>
+                        <p class="mt-4 text-justify font-weight-light" style="font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed velit dignissim sodales ut eu.</p>
+                    </div>
+                    
+                    <!-- second 2 values -->
+                    <div class="col-lg-4 col-md-12 col-sm-12 mt-3">
+                        <i class="fas fa-globe-americas text-dr-br slideanim" style="font-size: 1.4em;"></i>
+                        <span class="align-right text-dr-bl slideanim" style="font-size: 20px">International</span>
+                        <p class="mt-4 text-justify font-weight-light" style="font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In hac habitasse platea dictumst quisque sagittis purus sit amet.</p>
+                    </div>  
+                </div>
+            </div>
+        </section>
+
+        <!-- Management -->
+        <section class="my-5 py-5 bg-transparent">
+            <div class="container">
+                <h2 class="text-left text-dr-br" style="font-family: 'Montserrat', sans-serif;">Management Team</h2>
+                <div class="row slideanim">
+                    <% employees.forEach(function(employee){ %>
+                        <%- include('employee_template', employee); %>
+                    <% }); %>          
+                </div>
+            </div>
+        </section>
+        
+        <!-- Location -->
+        <section class="my-5 py-5 bg-lg-bl">
+            <div class="container slideanim">
+                <h2 class="text-left text-dr-br" style="font-family: 'Montserrat', sans-serif;">Office and Location</h2>
+                <div class="mt-5">
+                    <img class="img-fluid" src="../img/About-us/samson-ZGjbiukp_-A-unsplash.jpg">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-4 bg-transparent">
+            <%- include('footer'); %>
+        </footer>
+        
+       
+        
+        
+        <!-- Bootstrap JavaScript -->
+        <script src="js/bootstrap.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!-- Local script-->
+        <script src="js/slide.js"></script>
+
+        <!-- Font awesom script-->
+        <script src="https://kit.fontawesome.com/7ce695a48c.js" crossorigin="anonymous"></script>
+    
+    
+    </body>
+</html>

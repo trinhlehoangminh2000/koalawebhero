@@ -27,10 +27,10 @@ app.use(express.static('public'));
 };*/
 
 const databaseData = { 
-    host:"localhost",
-    user:"root",
-    password: "",
-    database: "koala",
+    host:"remotemysql.com",
+    user:"PWvADhWahT",
+    password: "CUVKk0Sah5",
+    database: "PWvADhWahT",
     port: 3306
 };
 //add a callback function to handle 

@@ -33,6 +33,14 @@ const databaseData = {
     database: "PWvADhWahT",
     port: 3306
 };
+
+// const databaseData = { 
+//     host:"localhost",
+//     user:"root",
+//     password: "",
+//     database: "koala",
+//     port: 3306
+// };
 //add a callback function to handle 
 //get request on the root
 app.get('/', function(req, res) {  
@@ -323,6 +331,11 @@ app.post('/handlecontact', function(req, res){
 app.get('/product', function(req, res) {
     db.getProductsNumber(databaseData,function(err,result){
         if(err){
+            console.log("Error at getting Products number");
+            ejs.renderFile('./html/index.ejs', data, null, function(err, str){
+                // str => Rendered HTML string
+                res.send(str);
+            });
         }
         else{
             var list = [];

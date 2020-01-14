@@ -36,10 +36,10 @@ exports.createTables = function (conData, callback){
 		  password: conData.password, 
 		  database: conData.database
 		});
-		let sql = "CREATE TABLE Contacts (id INT NOT NULL AUTO_INCREMENT, forename VARCHAR(32), surname VARCHAR(32), email VARCHAR(32), subject VARCHAR(2048), message TEXT, dateRecieved DATETIME, PRIMARY KEY (id));";
-		sql += "CREATE TABLE Users (username VARCHAR(16) NOT NULL, password VARCHAR(16) NOT NULL, PRIMARY KEY (username));"
-		sql += "CREATE TABLE Employees (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(32), img TEXT NOT NULL, jobTitle VARCHAR(32), PRIMARY KEY (id));"
-		sql += "CREATE TABLE Products ( `id` INT NOT NULL AUTO_INCREMENT, `title` VARCHAR(30) NOT NULL , `description` LONGTEXT NOT NULL , `price` DOUBLE NOT NULL , `img` TEXT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;"
+		let sql = "CREATE TABLE contacts (id INT NOT NULL AUTO_INCREMENT, forename VARCHAR(32), surname VARCHAR(32), email VARCHAR(32), subject VARCHAR(2048), message TEXT, dateRecieved DATETIME, PRIMARY KEY (id));";
+		sql += "CREATE TABLE users (username VARCHAR(16) NOT NULL, password VARCHAR(16) NOT NULL, PRIMARY KEY (username));"
+		sql += "CREATE TABLE employees (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(32), img TEXT NOT NULL, jobTitle VARCHAR(32), PRIMARY KEY (id));"
+		sql += "CREATE TABLE products ( `id` INT NOT NULL AUTO_INCREMENT, `title` VARCHAR(30) NOT NULL , `description` LONGTEXT NOT NULL , `price` DOUBLE NOT NULL , `img` TEXT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;"
 		con.query(sql, function (err, result) {
 			//console.log("finish query:" + result);
 			callback(err, result);
@@ -61,7 +61,7 @@ exports.addContact = function (conData, newContact, callback){
 		}	
 		
 		//perform the query
-		conn.query('INSERT INTO Contacts SET ?', newContact, function (err, result) {
+		conn.query('INSERT INTO contacts SET ?', newContact, function (err, result) {
 			//return control to the calling module
 			callback(err, result);
 		});
@@ -77,7 +77,7 @@ exports.login = function (connData, loginData, callback){
 			return;
 		}
 		//perform the query
-		conn.query('SELECT * FROM Users WHERE username = \'' + loginData.username + '\' AND password = \'' + loginData.password + '\'' , function (err, result) {
+		conn.query('SELECT * FROM users WHERE username = \'' + loginData.username + '\' AND password = \'' + loginData.password + '\'' , function (err, result) {
 			//return control to the calling module
 			callback(err, result);
 		});
@@ -94,7 +94,7 @@ exports.addProduct = function (conData, newProduct, callback){
 			return;
 		}
 		//excecute the query
-		conn.query('INSERT INTO Products SET ?', newProduct, function (err, result) {
+		conn.query('INSERT INTO products SET ?', newProduct, function (err, result) {
 			//return control to the calling module
 			callback(err, result);
 		});
@@ -111,7 +111,7 @@ exports.updateProduct = function (conData, newProduct, callback){
 			return;
 		}
 		//excecute the query
-		conn.query('UPDATE `Products` SET `title` = \''+updateProduct.title+'\', `description` = \''+updateProduct.description+'\', `price` = \''+updateProduct.price+'\', `img` = \''+updateProduct.img+'\' WHERE `products`.`id` =\'' + updateProduct.id + '\'', newProduct, function (err, result) {
+		conn.query('UPDATE `products` SET `title` = \''+updateProduct.title+'\', `description` = \''+updateProduct.description+'\', `price` = \''+updateProduct.price+'\', `img` = \''+updateProduct.img+'\' WHERE `products`.`id` =\'' + updateProduct.id + '\'', newProduct, function (err, result) {
 			//return control to the calling module
 			callback(err, result);
 		});
@@ -127,7 +127,16 @@ exports.getProduct = function (connData, id, callback){
 			return;
 		}
 		//perform the query
-		conn.query('SELECT * FROM Products WHERE id = \'' + i + '\'' , function (err, result) {
+		conn.query('SELECT * FROM products WHERE id = \'' + i + '\'' , function (err, result) {
+			if (result){
+				console.log('got the result');
+			} else {
+				console.log('No result');
+				ejs.renderFile('./html/index.ejs', data, null, function(err, str){
+					// str => Rendered HTML string
+					res.send(str);
+				});
+			}
 			//return control to the calling module
 			callback(err, result);
 		});
@@ -143,7 +152,7 @@ exports.delProduct = function (connData, id, callback){
 			return;
 		}
 		//perform the query
-		conn.query('DELETE FROM `Products` WHERE `products`.`id` = \'' + i + '\'' , function (err, result) {
+		conn.query('DELETE FROM `products` WHERE `products`.`id` = \'' + i + '\'' , function (err, result) {
 			//return control to the calling module
 			callback(err, result);
 		});
@@ -159,7 +168,7 @@ exports.getProductsNumber = function (connData, callback){
 		}
 		console.log("Connecting to db success: ")
 		//perform the query
-		conn.query('SELECT * FROM Products' , function (err, result) {
+		conn.query('SELECT * FROM products' , function (err, result) {
 			if(err){
 				console.log(err)
 			}
@@ -182,7 +191,7 @@ exports.getEmployeesNumber = function (connData, callback){
 		}
 		console.log("Connecting to db success: ")
 		//perform the query
-		conn.query('SELECT * FROM Employees' , function (err, result) {
+		conn.query('SELECT * FROM employees' , function (err, result) {
 			if(err){
 				console.log(err)
 			}
@@ -204,7 +213,7 @@ exports.delEmployee = function (connData, id, callback){
 			return;
 		}
 		//perform the query
-		conn.query('DELETE FROM `Employees` WHERE `Employees`.`id` = \'' + i + '\'' , function (err, result) {
+		conn.query('DELETE FROM `employees` WHERE `employees`.`id` = \'' + i + '\'' , function (err, result) {
 			//return control to the calling module
 			callback(err, result);
 		});
@@ -220,7 +229,7 @@ exports.addEmployee = function (conData, newEmployee, callback){
 			return;
 		}
 		//excecute the query
-		conn.query('INSERT INTO Employees SET ?', newEmployee, function (err, result) {
+		conn.query('INSERT INTO employees SET ?', newEmployee, function (err, result) {
 			//return control to the calling module
 			callback(err, result);
 		});
@@ -237,7 +246,7 @@ exports.getMessage = function (connData, id, callback){
 			return;
 		}
 		//perform the query
-		conn.query('SELECT * FROM Contacts WHERE id = \'' + i + '\'' , function (err, result) {
+		conn.query('SELECT * FROM contacts WHERE id = \'' + i + '\'' , function (err, result) {
 			//return control to the calling module
 			callback(err, result);
 		});
@@ -252,7 +261,7 @@ exports.getMessageNumber = function (connData, callback){
 			return;
 		}
 		//perform the query
-		conn.query('SELECT * FROM Contacts' , function (err, result) {
+		conn.query('SELECT * FROM contacts' , function (err, result) {
 			if (err){
 				console.log(err);
 			} else {

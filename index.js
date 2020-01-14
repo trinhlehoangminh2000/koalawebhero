@@ -18,29 +18,23 @@ app.use(express.static('public'));
 
 
 //prepare our database connection parameters
-/*const databaseData = { 
-    host:"remotemysql.com",
-    user:"NrTdrB6ISK",
-    password: "xVYC2vqXZi",
-    database: "NrTdrB6ISK",
-    port: 3306
-};*/
 
-const databaseData = { 
-    host:"remotemysql.com",
-    user:"PWvADhWahT",
-    password: "CUVKk0Sah5",
-    database: "PWvADhWahT",
-    port: 3306
-};
 
 // const databaseData = { 
-//     host:"localhost",
-//     user:"root",
-//     password: "",
-//     database: "koala",
+//     host:"remotemysql.com",
+//     user:"PWvADhWahT",
+//     password: "CUVKk0Sah5",
+//     database: "PWvADhWahT",
 //     port: 3306
 // };
+
+const databaseData = { 
+    host:"localhost",
+    user:"root",
+    password: "",
+    database: "koala",
+    port: 3306
+};
 //add a callback function to handle 
 //get request on the root
 app.get('/', function(req, res) {  
@@ -618,7 +612,7 @@ app.post('/authenticate', function(req, res){
         }
         else{
             if(data && data.length > 0){
-                req.session.user = data[0];
+                req.session.user = data;
                 //you loged in 
                 //you can go to home page
                 res.redirect('/admin');

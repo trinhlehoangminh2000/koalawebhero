@@ -76,10 +76,17 @@ exports.login = function (connData, loginData, callback){
 			callback(err);
 			return;
 		}
-		//perform the query
-		conn.query('SELECT * FROM users WHERE username = \'' + loginData.username + '\' AND password = \'' + loginData.password + '\'' , function (err, result) {
+		conn.query('SELECT password FROM users WHERE username = \'' + loginData.username +'\'' , function (err, result) {
 			//return control to the calling module
-			callback(err, result);
+			if (err){
+				callback(err, null);
+			}
+			if (loginData.password == result[0]["password"]){
+				callback(err,loginData.username);
+			} else {
+				callback(err, null);
+			}
+
 		});
 	})
 }

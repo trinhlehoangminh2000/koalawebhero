@@ -20,21 +20,21 @@ app.use(express.static('public'));
 //prepare our database connection parameters
 
 
-// const databaseData = { 
-//     host:"remotemysql.com",
-//     user:"PWvADhWahT",
-//     password: "CUVKk0Sah5",
-//     database: "PWvADhWahT",
-//     port: 3306
-// };
-
 const databaseData = { 
-    host:"localhost",
-    user:"root",
-    password: "",
-    database: "koala",
+    host:"remotemysql.com",
+    user:"PWvADhWahT",
+    password: "CUVKk0Sah5",
+    database: "PWvADhWahT",
     port: 3306
 };
+
+// const databaseData = { 
+//     host:"localhost",
+//     user:"root",
+//     password: "",
+//     database: "koala",
+//     port: 3306
+// };
 //add a callback function to handle 
 //get request on the root
 app.get('/', function(req, res) {  
